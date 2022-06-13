@@ -1,0 +1,40 @@
+'use strict';
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('Vehicles', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      name: {
+        type: Sequelize.STRING,
+      },
+      manufacturer: {
+        type: Sequelize.STRING,
+      },
+      release_year: {
+        type: Sequelize.INTEGER,
+      },
+      description: {
+        type: Sequelize.TEXT,
+      },
+      sold: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
+  },
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('Vehicles');
+  }
+};
